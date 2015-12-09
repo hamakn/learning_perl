@@ -12,12 +12,13 @@ my @links = (
 );
 
 my $pm = Parallel::Prefork->new({
-    max_workers  => 1,
+    max_workers  => 5,
     trap_signals => {
         TERM => 'TERM',
         HUP  => 'TERM',
         USR1 => undef,
-    }
+    },
+    spawn_interval => 3, # spawnのinterval。
 });
 
 # サンプル
